@@ -1,0 +1,13 @@
+- hosts: test
+  strategy: linear
+  tasks:
+    - name: installing httpd
+      yum: name=httpd state=present
+
+    - name: starting the web server
+      service: name=httpd state=started
+
+    - name: git checkout
+      git:
+        repo: "https://github.com/vamshi9133/devops.git"
+        dest: "/var/www/html/"
